@@ -1,0 +1,58 @@
+using System;    
+using System.Collections.Generic;       
+using System.Net;    
+using System.Text;    
+using MbUnit.Framework;    
+using Microsoft.VisualStudio.TestTools.UnitTesting;    
+using OpenQA.Selenium;    
+using OpenQA.Selenium.Chrome;    
+using OpenQA.Selenium.Support.UI;
+
+
+
+namespace PageObjectModel    
+{    
+    [TestClass]   
+    public class CsharpBetwaySignUp
+    {    
+        IWebDriver webDriver;    
+        
+        public CsharpBetwaySignUp   
+        {    
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;    
+            ChromeOptions chromeOptions = new ChromeOptions();    
+            chromeOptions.AddArgument("disable-infobars");
+            webDriver.Navigate().GoToUrl("https://www.betway.co.za/");    
+            webDriver.Manage().Window.Maximize();    
+            WebDriverWait waitForControl = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));    
+        }    
+    
+        [TestMethod] //[Test]    
+        public void CsharpBetwaySignUp()    
+        {    
+            //Phone Number
+           IWebElement signUpClick = webDriver.FindElement(By.XPath("//*[@id='MobileNumber_tmpl']"));    
+            signUpClick.Click();    
+            WebDriverWait waitForControl = new WebDriverWait(webDriver, TimeSpan.FromSeconds(40));    
+            //password
+            IWebElement enterEmail = webDriver.FindElement(By.XPath(//*[@id='Password_tmpl']"));    
+            enterEmail.SendKeys("khajamoiz0011@outlook.com");    
+            WebDriverWait enterMail = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));    
+            //TextBoxFirstNamme
+            IWebElement firstName = webDriver.FindElement(By.XPath(//*[@id='FirstName_tmpl']));    
+            firstName.SendKeys("Khaja");    
+            WebDriverWait fName = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));    
+            //TextBoxLastName
+            IWebElement lastName = webDriver.FindElement(By.XPath(//*[@id='LastName_tmpl']));    
+            lastName.SendKeys("Moizuddin");     
+            WebDriverWait lName = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));    
+            //Email Address
+            IWebElement enterPassword = webDriver.FindElement(By.XPath(//*[@id='Email_tmpl']"));    
+            enterPassword.SendKeys("C#Corner12345");    
+            WebDriverWait password = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));   
+            //Next Button
+            IWebElement btnNext = webDriver.FindElement(By.XPath(//*[@id='nxtBtn']"));    
+            btnNext.Click();    
+            WebDriverWait waitForControl = new WebDriverWait(webDriver, TimeSpan.FromSeconds(40));  
+
+     
